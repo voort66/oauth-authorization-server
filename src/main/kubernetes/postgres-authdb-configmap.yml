@@ -1,0 +1,12 @@
+# PostgreSQL StatefulSet ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-authdb-config
+  labels:
+    app: postgresql-authdb
+data:
+  POSTGRES_DB: keycloak
+  POSTGRES_USER: wvoort66	
+  POSTGRES_PASSWORD: wvoort66
+  PGDATA: /data/pgdata

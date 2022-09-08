@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oauth-server-postgresql-config
+data:
+  application.json: 
+   '{
+    "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.PostgreSQLDialect",
+	"spring.jpa.defer-datasource-initialization" : true,
+    "spring.datasource.username" : "wvoort66",
+	"spring.datasource.password" : "wvoort66",
+    "spring.datasource.url": "jdbc:postgresql://postgresql-authdb-0.authdb.default.svc.cluster.local:5432/keycloak?useSSL=fale",
+	"spring.datasource.hikari.maximum-pool-size": 25,
+	"spring.datasource.hikari.minimum-idle": 1,
+	"spring.datasource.driver-class-name": "org.postgresql.Driver",
+    "javax.persistence.create-database-schemas" : true,
+    "keycloak.server.contextPath" : "/auth",
+    "keycloak.adminuser.username" : "wvoort66-admin",
+    "keycloak.adminUser.password" : "passme",
+    "keycloak.realmImportFile" : "wc2022-realm.json"
+    }'

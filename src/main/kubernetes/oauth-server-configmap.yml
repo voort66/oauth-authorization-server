@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oauth-server-config
+data:
+  application.json: 
+   '{
+    "spring.datasource.username" : "sa",
+    "spring.datasource.url": "jdbc:h2:mem:customdb;DB_CLOSE_ON_EXIT=FALSE",
+    "keycloak.server.contextPath" : "/auth",
+    "keycloak.adminuser.username" : "wvoort66-admin",
+    "keycloak.adminUser.password" : "passme",
+    "keycloak.realmImportFile" : "wc2022-realm.json"
+    }'

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authdb
+  labels:
+    app: postgresql-authdb
+spec:
+  ports:  
+  - port: 5432
+    name: postgresql-authdb
+  clusterIP: None 
+  selector:
+    app: postgresql-authdb

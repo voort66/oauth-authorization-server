@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oauth-server-app
+  revisionHistoryLimit: 2
+  progressDeadlineSeconds: 300
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: oauth-server-app
+    spec:
+      containers:
+      - name: oauth-server-ctr
+        image: voort66/oauth-authorization-server:latest
+        ports:
+        - containerPort: 8083
+        env:      
+        - name: SPRING_APPLICATION_JSON
+          valueFrom:
+            configMapKeyRef:
+              name: oauth-server-postgresql-config
+              key: application.json
+  
