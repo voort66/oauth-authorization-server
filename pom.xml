@@ -135,8 +135,8 @@
                     <to>
                         <image>voort66/oauth-authorization-server</image>
                         <auth>
-                            <username></username>
-                            <password></password>
+                            <username>${docker.username}</username>
+                            <password>${docker.password}</password>
                         </auth>
                     </to>
                 </configuration>
